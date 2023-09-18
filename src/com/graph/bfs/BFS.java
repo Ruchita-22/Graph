@@ -41,6 +41,37 @@ public class BFS {
 		}
 		
 	}
+	private static void constDirctedGraph1(int n, int arr[][]) {
+		ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+		for(int i=0;i <= n;i++) {
+			graph.add(i,new ArrayList<>());
+		}
+		
+		for(int i=0;i<arr.length;i++) {
+			int src = arr[i][0];
+			int des = arr[i][1];
+			
+			//src to des
+			graph.get(src).add(des);
+		}
+		
+	}
+	private static void constUndirctedGraph1(int n , int arr[][]) {
+		ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+		for(int i=0;i <= n;i++) {
+			graph.add(i,new ArrayList<>());
+		}
+		for(int i=0;i<arr.length;i++) {
+			int src = arr[i][0];
+			int des = arr[i][1];
+			
+			//src to des
+			graph.get(src).add(des);
+			//des to src
+			graph.get(des).add(src);
+		}
+		
+	}
 	private static boolean bfs(ArrayList<ArrayList<Integer>> graph, int src, int des) {
 		boolean visited[] =  new boolean[graph.size()+1];
 		Arrays.fill(visited, false);

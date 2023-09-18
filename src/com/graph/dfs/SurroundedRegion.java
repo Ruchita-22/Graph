@@ -24,7 +24,10 @@ public class SurroundedRegion {
         }    
     }
     private static void dfs(int i, int j, char mat[][]){
-        if(!isValid(i, j, mat))	return;
+    	int n = mat.length;
+    	int m = mat[0].length;
+    	
+        if(!isValid(i, j, n, m))	return;
         if(mat[i][j]=='O'){
             mat[i][j] = '#';
             dfs(i-1,j,mat);
@@ -33,8 +36,8 @@ public class SurroundedRegion {
             dfs(i,j+1,mat);
         }
     }
-    private static boolean isValid(int i, int j, char mat[][]) {
-    	if(i<0 || i>=mat.length || j<0 || j>=mat[0].length ) return false;
+    private static boolean isValid(int i, int j, int n, int m) {
+    	if(i < 0 || i >= n || j < 0 || j >= m ) return false;
     	else return true;
     }
 

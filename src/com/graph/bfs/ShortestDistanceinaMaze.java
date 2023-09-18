@@ -8,6 +8,8 @@ public class ShortestDistanceinaMaze {
 		// TODO Auto-generated method stub
 
 	}
+	// mat[i][j] = 0 empty
+	// mat[i][j] = 1 wall
 	class Pair{
 	    int x,y,dir;
 	    public Pair(int x, int y, int dir){
@@ -19,7 +21,7 @@ public class ShortestDistanceinaMaze {
 	public int solve(int[][] mat, int[] s, int[] d) {
         int n = mat.length;
         int m = mat[0].length;
-        
+        // initialise dist
         int dist[][][] = new int[n][m][4];
         for (int t[][] : dist)    
            for(int t1[] : t)
@@ -27,6 +29,7 @@ public class ShortestDistanceinaMaze {
 
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(s[0],s[1],4));
+        //visited in all dir is 0
         for(int i=0;i<4;i++){
             dist[s[0]][s[1]][i] = 0;
         }
@@ -40,19 +43,19 @@ public class ShortestDistanceinaMaze {
             if(dir != 4){
                 int x = p.x + dx[dir];
                 int y = p.y + dy[dir];
-                if(isValid(x,y,n,m)==false || mat[x][y]==1){
-                    if(p.x==d[0] && p.y==d[1])  return dist[p.x][p.y][dir];
+                if(!isValid(x,y,n,m) || mat[x][y]==1){
+                    if(p.x==d[0] && p.y==d[1])  return dist[p.x][p.y][dir];			// so we reach destination
                     else {
                         for(int i=0;i<4;i++)
                         {
-                            dist[p.x][p.y][i]=dist[p.x][p.y][dir];
+                            dist[p.x][p.y][i] = dist[p.x][p.y][dir];
                         }
                         dir=4;
                     }    
                 } 
 
             }
-            if(dir==4){
+            if(dir==4){					// go in all 4 dir
                 for(int i=0;i<4;i++){
                     int x = p.x + dx[i];
                     int y = p.y + dy[i];
@@ -65,8 +68,8 @@ public class ShortestDistanceinaMaze {
             else {
                 int x = p.x + dx[dir];
                 int y = p.y + dy[dir];
-                if(dist[x][y][p.dir] > 1+dist[p.x][p.y][p.dir]){
-                    dist[x][y][p.dir] = 1+dist[p.x][p.y][p.dir];
+                if(dist[x][y][p.dir] > 1 + dist[p.x][p.y][p.dir]){
+                    dist[x][y][p.dir] = 1 + dist[p.x][p.y][p.dir];
                     q.add(new Pair(x,y,dir));
                 }
             }

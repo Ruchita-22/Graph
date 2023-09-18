@@ -17,6 +17,7 @@ public class DistanceToNearestCell {
 	    }
 	}
 	public int[][] solve(int[][] mat) {
+		
         int n = mat.length;
         int m = mat[0].length;
         int res[][] = new int[n][m];
@@ -36,11 +37,11 @@ public class DistanceToNearestCell {
         while(q.size()>0){
             Pair p = q.poll();
            
-            for(int t=0;t<4;t++){
-                int x = p.x+dx[t];
-                int y = p.y+dy[t];
+            for(int i=0;i<4;i++){
+                int x = p.x+dx[i];
+                int y = p.y+dy[i];
                 if(isValid(x,y,n,m)){
-                    if(res[x][y]>res[p.x][p.y]+1){
+                    if(res[x][y]> 1 + res[p.x][p.y]){
                         q.add(new Pair(x,y));
                         res[x][y]= 1+ res[p.x][p.y];
                     }

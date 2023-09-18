@@ -24,10 +24,12 @@ public class ConstructionCost {
         for(int i=0;i<edges.length;i++) {
 			int u = edges[i][0];
             int v = edges[i][1];
+			// find parent
 			int pu = parentCompute(u,parent);
 			int pv = parentCompute(v,parent);
 			if(pu != pv) {
                 cost += edges[i][2];
+				// union of two component
 				parent[Math.max(pu, pv)] = Math.min(pu, pv);
 			}
 			
@@ -37,9 +39,10 @@ public class ConstructionCost {
 		
     }
 
+	//TC = O(1)
     private static int parentCompute(int n, int parent[]) {
 		if(parent[n]==n)	return n;
-		return parent[n] = parentCompute(parent[n], parent);	
+		return parent[n] = parentCompute(parent[n], parent);	// path compression
 	}
 
 }

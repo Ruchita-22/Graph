@@ -22,14 +22,14 @@ public class KnightOnChessBoard {
         di = di-1;
         dj = dj-1;
         //edge case
-        if(!isValid(si,sj,n,m)) return -1;
+        if(!isValid(si,sj,n,m)) return -1;			// if source not valid
         if(!isValid(di,dj,n,m)) return -1;
         if(si==di && sj==dj)    return 0;
 
         int dist[][] = new int[n][m];
         for(int t[] : dist) Arrays.fill(t,100000000);
 
-        int dx[] = new int[]{-2, -2,1,1,-1,-1,2,2};
+        int dx[] = new int[]{-2, -2,1,1,-1,-1,2,2};	// knite move 2.5 steps
         int dy[] = new int[]{1,-1,2,-2,2,-2,-1,1};
 
         Queue<Pair> q = new LinkedList<>();

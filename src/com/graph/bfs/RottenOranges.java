@@ -20,6 +20,7 @@ public class RottenOranges {
         int m = mat[0].length;
 
         Queue<Pair> q = new LinkedList<>();
+        //find rotten orange and then start
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(mat[i][j]==2){    
@@ -28,7 +29,8 @@ public class RottenOranges {
                 }    
             }
         }
-
+        
+        // BFS
         int dx[] = new int[]{-1,0,1,0};
         int dy[] = new int[]{0,1,0,-1};
 
@@ -48,6 +50,7 @@ public class RottenOranges {
                 }
             }
         }
+        // calculate max time
         int maxTime = 0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){

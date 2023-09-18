@@ -12,14 +12,17 @@ public class CheckBipartite {
 
 	}
 	public int solve(int n, int[][] mat) {
+		// graph construction
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
         for(int i=0;i<=n;i++)   graph.add(i,new ArrayList());
+        
         for(int i=0;i<mat.length;i++){
             int s = mat[i][0];
             int d = mat[i][1];
             graph.get(s).add(d);
             graph.get(d).add(s);
         }
+        // check Bipartite
         int visited[] = new int[n+1];
         Arrays.fill(visited,0);
         for(int i=1;i<=n;i++){
